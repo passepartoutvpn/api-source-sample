@@ -7,7 +7,7 @@ Dir.chdir(cwd)
 
 ca = File.read("../certs/ca.pem")
 countries = ["US", "FR", "DE", "ES", "IT"]
-bogus_ip = 16909060
+bogus_ip_prefix = "1.2.3"
 
 ###
 
@@ -16,16 +16,21 @@ countries.each { |k|
     id = k.downcase
     hostname = "#{id}.sample-vpn-provider.bogus"
 
-    #print "Resolving #{hostname} ..."
-    #addresses = Resolv.getaddresses(hostname)
-
-    addresses = []
-    3.times {
-        addresses << bogus_ip
-        bogus_ip += 1
-    }
+    addresses = nil
+    if ARGV.length > 0 && ARGV[0] == "noresolv"
+        addresses = []
+    else
+        #addresses = Resolv.getaddresses(hostname)
+        addresses = []
+        octet = 1
+        5.times {
+            ip = "#{bogus_ip_prefix}.#{octet}"
+            addresses << ip
+            octet += 1
+        }
+    end
     addresses.map! { |a|
-        IPAddr.new(a, Socket::AF_INET)
+        IPAddr.new(a).to_i
     }
 
     pool = {

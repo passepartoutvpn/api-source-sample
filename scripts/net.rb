@@ -26,6 +26,20 @@ recommended_cfg["ca"] = ca
 recommended_cfg["cipher"] = "AES-128-GCM"
 recommended_cfg["auth"] = "SHA1"
 
+recommended = {
+    id: "recommended",
+    name: "Recommended",
+    comment: "128-bit encryption",
+    cfg: recommended_cfg
+}
+presets = [recommended]
+
+defaults = {
+    :username => "myusername",
+    :pool => "us",
+    :preset => "recommended"
+}
+
 ###
 
 pools = []
@@ -58,20 +72,6 @@ countries.each { |k|
         :addrs => addresses
     }
     pools << pool
-}
-
-recommended = {
-    id: "recommended",
-    name: "Recommended",
-    comment: "128-bit encryption",
-    cfg: recommended_cfg
-}
-presets = [recommended]
-
-defaults = {
-    :username => "myusername",
-    :pool => "us",
-    :preset => "recommended"
 }
 
 ###

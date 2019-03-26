@@ -27,8 +27,8 @@ recommended_cfg["cipher"] = "AES-128-GCM"
 recommended_cfg["auth"] = "SHA1"
 
 recommended = {
-    id: "recommended",
-    name: "Recommended",
+    id: "default",
+    name: "Default",
     comment: "128-bit encryption",
     cfg: recommended_cfg
 }
@@ -37,7 +37,7 @@ presets = [recommended]
 defaults = {
     :username => "myusername",
     :pool => "us",
-    :preset => "recommended"
+    :preset => "default"
 }
 
 ###

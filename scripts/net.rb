@@ -5,9 +5,26 @@ require "ipaddr"
 cwd = File.dirname(__FILE__)
 Dir.chdir(cwd)
 
-ca = File.read("../certs/ca.pem")
+###
+
+ca = File.read("../static/ca.pem")
 countries = ["US", "FR", "DE", "ES", "IT"]
 bogus_ip_prefix = "1.2.3"
+
+cfg = {
+    ep: [
+        "UDP:1194",
+        "TCP:443",
+    ],
+    frame: 1,
+    ping: 60,
+    reneg: 3600
+}
+
+recommended_cfg = cfg.dup
+recommended_cfg["ca"] = ca
+recommended_cfg["cipher"] = "AES-128-GCM"
+recommended_cfg["auth"] = "SHA1"
 
 ###
 
@@ -47,18 +64,7 @@ recommended = {
     id: "recommended",
     name: "Recommended",
     comment: "128-bit encryption",
-    cfg: {
-        ep: [
-            "UDP:1194",
-            "TCP:443",
-        ],
-        cipher: "AES-128-GCM",
-        auth: "SHA1",
-        ca: ca,
-        frame: 1,
-        ping: 60,
-        reneg: 3600
-    }
+    cfg: recommended_cfg
 }
 presets = [recommended]
 

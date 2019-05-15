@@ -8,6 +8,8 @@ The output JSON must follow this format:
     "defaults": {...}   // map of default values
 }
 
+Types with a trailing ? are optional.
+
 Pool:
 
 {
@@ -40,10 +42,10 @@ Configuration:
     "wrap": TLSWrap?,               // the TLS wrapping (see below)
     "cipher": String?,              // the encryption cipher (AES-###-CBC or AES-###-GCM)
     "auth": String?,                // the HMAC algorithm (SHA###)
-    "frame": Integer?,              // compression framing (0 = none, 1 = --comp-lzo, 2 = --compress)
-    "compression": Integer?,        // compression algorithm (0 = none, 1 = LZO)
-    "ping": Integer?,               // keep-alive interval (seconds)
-    "reneg": Integer?,              // renegotiation interval (seconds)
+    "frame": Int?,                  // compression framing (0 = none, 1 = --comp-lzo, 2 = --compress)
+    "compression": Int?,            // compression algorithm (0 = none, 1 = LZO)
+    "ping": Int?,                   // keep-alive interval (seconds)
+    "reneg": Int?,                  // renegotiation interval (seconds)
     "eku": Bool?,                   // enable extended key usage verification
     "random": Bool?,                // randomize endpoint pick
     "pia": Bool?                    // servers use PIA patches
@@ -54,7 +56,7 @@ TLSWrap:
 {
     "strategy": "auth"|"crypt",     // for --tls-auth or --tls-crypt
     "key": {
-        "dir": Integer,             // conventionally 1
+        "dir": Int,                 // conventionally 1
         "data": String,             // base64-encoded static OpenVPN key
     }
 }
@@ -62,10 +64,10 @@ TLSWrap:
 External:
 
 {
-    "hostname": string,             // pattern for pool hostname (e.g. "${id}.provider.com" would
+    "hostname": String,             // pattern for pool hostname (e.g. "${id}.provider.com" would
                                     // translate to "de123.provider.com" for pool with id "de123"
-    "ca": string,                   // filename pattern for CA in external resources
-    "wrapKeyData": string           // filename pattern for TLS key in external resources
+    "ca": String,                   // filename pattern for CA in external resources
+    "wrapKeyData": String           // filename pattern for TLS key in external resources
 }
 
     External resources are looked up when the corresponding element could not be found in either
@@ -76,7 +78,7 @@ External:
 Defaults:
 
 {
-    "username": string,             // placeholder for account username
-    "pool": string,                 // default pool identifier (full match or prefix)
-    "preset": string                // default preset identifier (full match)
+    "username": String,             // placeholder for account username
+    "pool": String,                 // default pool identifier (full match or prefix)
+    "preset": String                // default preset identifier (full match)
 }

@@ -4,10 +4,12 @@ require "ipaddr"
 
 cwd = File.dirname(__FILE__)
 Dir.chdir(cwd)
+load("util.rb")
 
 ###
 
 ca = File.read("../static/ca.pem")
+tls_wrap = read_tls_wrap("auth", 1, "../static/ta.key", 4, 20)
 countries = ["US", "FR", "DE", "ES", "IT"]
 bogus_ip_prefix = "1.2.3"
 
@@ -25,6 +27,7 @@ recommended_cfg = cfg.dup
 recommended_cfg["ca"] = ca
 recommended_cfg["cipher"] = "AES-128-GCM"
 recommended_cfg["auth"] = "SHA1"
+recommended_cfg["wrap"] = tls_wrap
 
 recommended = {
     id: "default",

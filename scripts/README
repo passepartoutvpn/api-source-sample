@@ -38,12 +38,14 @@ Configuration:
 
 {
     "ep": [String],                 // list of endpoints e.g. "UDP:1198", "TCP:443"
-    "ca": String?,                  // PEM-encoded CA
+    "ca": String,                   // PEM-encoded CA
     "wrap": TLSWrap?,               // the TLS wrapping (see below)
     "cipher": String?,              // the encryption cipher (AES-###-CBC or AES-###-GCM)
     "auth": String?,                // the HMAC algorithm (SHA###)
     "frame": Int?,                  // compression framing (0 = none, 1 = --comp-lzo, 2 = --compress)
     "compression": Int?,            // compression algorithm (0 = none, 1 = LZO)
+    "client": String?,              // client certificate
+    "key": String?,                 // client certificate key
     "ping": Int?,                   // keep-alive interval (seconds)
     "reneg": Int?,                  // renegotiation interval (seconds)
     "eku": Bool?,                   // enable extended key usage verification

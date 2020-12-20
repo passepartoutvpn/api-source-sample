@@ -9,7 +9,7 @@ load "util.rb"
 ###
 
 ca = File.read("../static/ca.pem")
-tls_wrap = read_tls_wrap("auth", 1, "../static/ta.key", 4, 20)
+tls_wrap = read_tls_wrap("auth", 1, "../static/ta.key", 4)
 countries = ["US", "FR", "DE", "ES", "IT"]
 bogus_ip_prefix = "1.2.3"
 

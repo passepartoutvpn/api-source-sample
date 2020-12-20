@@ -69,7 +69,7 @@ External:
     "hostname": String,             // pattern for pool hostname (e.g. "${id}.provider.com" would
                                     // translate to "de123.provider.com" for pool with id "de123"
     "ca": String,                   // filename pattern for CA in external resources
-    "wrapKeyData": String           // filename pattern for TLS key in external resources
+    "wrap_key_data": String         // filename pattern for TLS key in external resources
 }
 
     External resources are looked up when the corresponding element could not be found in either

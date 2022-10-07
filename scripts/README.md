@@ -29,8 +29,8 @@ Preset:
     "id": String,                   // unique preset identifier
     "name": String,                 // English name for the preset
     "comment": String,              // short description
-    "ovpn": [String: Any],          // an object representing an OpenVPN configuration
-    "wg": [String: Any],            // an object representing a WireGuard configuration
+    "ovpn": [String: Any],          // an object representing an [OpenVPN configuration][doc-ovpn]
+    "wg": [String: Any],            // an object representing a [WireGuard configuration][doc-wg]
 }
 
 Defaults:
@@ -39,3 +39,6 @@ Defaults:
     "username": String,             // placeholder for account username
     "country": String               // default location country code (uppercase)
 }
+
+[doc-ovpn]: https://github.com/passepartoutvpn/tunnelkit/blob/master/Sources/TunnelKitOpenVPNCore/Configuration.swift#L356
+[doc-wg]: https://github.com/passepartoutvpn/tunnelkit/blob/master/Sources/TunnelKitWireGuardCore/Configuration.swift#L30

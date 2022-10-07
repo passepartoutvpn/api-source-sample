@@ -14,26 +14,26 @@ countries = ["US", "FR", "DE", "ES", "IT"]
 bogus_ip_prefix = "1.2.3"
 
 cfg = {
-  ep: [
-    "UDP:1194",
-    "TCP:443",
-  ],
-  frame: 1,
-  ping: 60,
-  reneg: 3600
+  ca: ca,
+  tlsWrap: tls_wrap,
+  cipher: "AES-128-GCM",
+  digest: "SHA1",
+  compressionFraming: 1,
+  keepAliveInterval: 60,
+  renegotiatesAfterSeconds: 3600
 }
-
-recommended_cfg = cfg.dup
-recommended_cfg["ca"] = ca
-recommended_cfg["cipher"] = "AES-128-GCM"
-recommended_cfg["auth"] = "SHA1"
-recommended_cfg["wrap"] = tls_wrap
 
 recommended = {
   id: "default",
   name: "Default",
   comment: "128-bit encryption",
-  cfg: recommended_cfg
+  ovpn: {
+    cfg: cfg,
+    endpoints: [
+      "UDP:1194",
+      "TCP:443",
+    ],
+  }
 }
 presets = [recommended]
 

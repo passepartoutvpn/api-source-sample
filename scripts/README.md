@@ -50,5 +50,5 @@ Defaults:
 }
 ```
 
-[doc-ovpn]: https://github.com/passepartoutvpn/tunnelkit/blob/master/Sources/TunnelKitOpenVPNCore/Configuration.swift#L356
-[doc-wg]: https://github.com/passepartoutvpn/tunnelkit/blob/master/Sources/TunnelKitWireGuardCore/Configuration.swift#L30
+[doc-ovpn]: https://github.com/passepartoutvpn/tunnelkit/blob/master/Sources/TunnelKitOpenVPNCore/Configuration.swift
+[doc-wg]: https://github.com/passepartoutvpn/tunnelkit/blob/master/Sources/TunnelKitWireGuardCore/Configuration.swift
